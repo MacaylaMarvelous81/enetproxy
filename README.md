@@ -1,14 +1,6 @@
 # Growtopia enet proxy
 
-# Download release for V3.51 [here](https://github.com/ama6nen/enetproxy/releases/tag/V3.51)
-# NOTE: This is not an internal cheat. Proxy is not an internal cheat in any way or form.
-## For internal see [this](https://github.com/ama6nen/INZERNAL), my new internal project.
-
-## Don't add me in discord for help with compiling/adding feature/some simple thing with proxy or you will get instantly blocked
-
-Ayyware for gt at this point 
-
-Anyone using or selling "fixed proxy" is a human failure
+<img align="center" src="https://github-readme-stats.vercel.app/api/pin?username=MacaylaMarvelous81&show_icons=true&theme=radical&repo=enetproxy&show_owner=true">
 
 ## How to use
 * Does not need separate http server
@@ -32,7 +24,7 @@ Anyone using or selling "fixed proxy" is a human failure
 * Works with subserver switching
 
 ## TODO
-* Delete this
+- [ ] Fix (Locating server, connecting...) after reconnecting to proxy
 
 ## Changelog
 
@@ -77,10 +69,3 @@ Anyone using or selling "fixed proxy" is a human failure
 * Ignore crash logs that would be sent to gt
 * Clean code
 * Gives unlimited zoom
-
-### Video: https://streamable.com/bhokj  
-
-![x](https://i.imgur.com/RG2o9pM.png "Proxy pic 3")
-![x](https://i.imgur.com/3DFiMgS.png "Proxy pic 2")
-![x](https://i.imgur.com/Lndhj70.png "Proxy pic 1")
-
