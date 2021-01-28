@@ -353,3 +353,9 @@ void server::send(bool client, std::string text, int32_t type) {
         PRINTS("Error sending packet! code: %d\n", code);
     enet_host_flush(host);
 }
+
+
+void server::sendmadeclient(ENetPacket* packet) {
+    enet_peer_send(m_gt_peer, 0, packet);
+    enet_host_flush(m_proxy_server);
+}

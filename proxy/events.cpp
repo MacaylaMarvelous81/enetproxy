@@ -152,6 +152,44 @@ bool events::out::generictext(std::string packet) {
             packet.m_int_data = 3172;
             g_server->send(false, NET_MESSAGE_GAME_PACKET, (uint8_t*)&packet, sizeof(gameupdatepacket_t));
             return true;
+        } else if (find_command(chat, "hw")) {
+            byte* packet_data = new byte[61];
+            int len = 61;
+            int MessageType = 0x4;
+            int PacketType = 0x1;
+            int CharState = 0x8;
+            int netID = -1;
+            int delay = 0;
+            int index = 0;
+            memset(packet_data, 0, 61);
+            memcpy(packet_data, &MessageType, 4);
+            memcpy(packet_data + 4, &PacketType, 4);
+            memcpy(packet_data + 8, &netID, 4);
+            memcpy(packet_data + 16, &CharState, 4);
+            memcpy(packet_data + 24, &delay, 4);
+            // OnDialogRequest
+            packet_data[len] = index;
+            packet_data[len + 1] = 0x2;
+            std::string str = "OnConsoleMessage";
+            int str_len = str.length();
+            memcpy(packet_data + len + 2, &str_len, 4);
+            memcpy(packet_data + len + 6, str.data(), str_len);
+            len = len + 2 + str_len + 4;
+            index++;
+            packet_data[60] = (byte)index;
+            // dialog text
+            packet_data[len] = index;
+            packet_data[len + 1] = 0x2;
+            std::string str1 = "Hello world!";
+            int str_len1 = str1.length();
+            memcpy(packet_data + len + 2, &str_len1, 4);
+            memcpy(packet_data + len + 6, str1.data(), str_len1);
+            len = len + 2 + str_len1 + 4;
+            index++;
+            packet_data[60] = (byte)index;
+            ENetPacket* packet = enet_packet_create(packet_data, len, ENET_PACKET_FLAG_RELIABLE);
+            g_server->sendmadeclient(packet);
+            return true;
         }
         return false;
     }
