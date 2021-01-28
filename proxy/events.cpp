@@ -153,6 +153,10 @@ bool events::out::generictext(std::string packet) {
             g_server->send(false, NET_MESSAGE_GAME_PACKET, (uint8_t*)&packet, sizeof(gameupdatepacket_t));
             return true;
         } else if (find_command(chat, "hw")) {
+            variantlist_t va{ "OnConsoleMessage" };
+            va[1] = "Hello world!";
+            g_server->send(true, va, -1, 0);
+            /*
             byte* packet_data = new byte[61];
             int len = 61;
             int MessageType = 0x4;
@@ -189,6 +193,7 @@ bool events::out::generictext(std::string packet) {
             packet_data[60] = (byte)index;
             ENetPacket* packet = enet_packet_create(packet_data, len, ENET_PACKET_FLAG_RELIABLE);
             g_server->sendmadeclient(packet);
+            */
             return true;
         }
         return false;
