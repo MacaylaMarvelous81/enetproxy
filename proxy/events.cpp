@@ -102,7 +102,11 @@ bool events::out::generictext(std::string packet) {
             return true;
         } else if (find_command(chat, "warp ")) {
             std::string name = chat.substr(6);
-            gt::send_log("`7Warping to " + name);
+            // gt::send_log("`7Warping to " + name);
+            variantlist_t va{ "OnTextOverlay" };
+            va[1] = "``Warping to `4" + name + "``...";
+            g_server->send(true, va, -1, 0);
+            // g_server->send(true, "action|play_sfx\nfile|audio/door_shut.wav\ndelayMS|0"); TODO
             g_server->send(false, "action|join_request\nname|" + name, 3);
             return true;
         } else if (find_command(chat, "skin ")) {
